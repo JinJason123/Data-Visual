@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="doughnut"></canvas>
-  <canvas id="bar"></canvas>
+  <div class="chart-container">
+    <canvas id="doughnut"></canvas>
+  </div>
+  <div class="chart-container">
+    <canvas id="bar"></canvas>
+  </div>
+
   <script>
     const labels = ["White", "Black", "Gray", "Silver", "Blue"];
     const data = [25, 20, 18, 15, 10];
     const colors = ["#fff", "#000", "#888", "#ccc", "#00f"];
-
     const dataset = {
       data,
       backgroundColor: colors,
@@ -22,6 +37,7 @@
       type: 'doughnut',
       data: { labels, datasets: [dataset] },
       options: {
+        responsive: true,
         plugins: { title: { display: true, text: 'Most Common Car Colors (by Jason Jin)' } }
       }
     });
@@ -30,6 +46,7 @@
       type: 'bar',
       data: { labels, datasets: [dataset] },
       options: {
+        responsive: true,
         indexAxis: 'y',
         plugins: { title: { display: true, text: 'Car Colors (by Jason Jin)' } }
       }
